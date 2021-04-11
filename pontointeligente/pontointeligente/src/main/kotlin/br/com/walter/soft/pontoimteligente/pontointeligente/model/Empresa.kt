@@ -7,10 +7,10 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Empresa (
+class Empresa(
     val razaoSocial: String,
     val cnpj: String,
-        ){
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: UUID? = null
