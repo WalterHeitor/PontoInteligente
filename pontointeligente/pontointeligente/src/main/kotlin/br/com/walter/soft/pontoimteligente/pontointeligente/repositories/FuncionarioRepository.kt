@@ -6,4 +6,7 @@ import java.util.*
 
 interface FuncionarioRepository : JpaRepository<Funcionario, UUID> {
 
+    fun findByEmail(email: String): Optional<Funcionario>
+
+    fun findByCpf(cpf: String): Optional<Funcionario>
 }
