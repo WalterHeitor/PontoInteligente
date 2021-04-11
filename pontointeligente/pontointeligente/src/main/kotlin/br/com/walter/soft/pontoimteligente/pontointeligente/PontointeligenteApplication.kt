@@ -1,4 +1,4 @@
-package br.com.soft.walter.pontointeligente
+package br.com.walter.soft.pontoimteligente.pontointeligente
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

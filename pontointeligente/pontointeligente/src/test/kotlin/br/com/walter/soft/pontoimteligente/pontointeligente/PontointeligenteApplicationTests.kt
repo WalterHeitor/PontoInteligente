@@ -1,4 +1,4 @@
-package br.com.soft.walter.pontointeligente
+package br.com.walter.soft.pontoimteligente.pontointeligente
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
