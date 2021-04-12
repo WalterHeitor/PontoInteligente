@@ -27,6 +27,13 @@ dependencies {
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+
+	testImplementation ("org.junit.jupiter:junit-jupiter-api")
+	testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
+
+	// https://mvnrepository.com/artifact/junit/junit
+//	testImplementation ("junit:version: 4.12")
+
 }
 
 tasks.withType<KotlinCompile> {
