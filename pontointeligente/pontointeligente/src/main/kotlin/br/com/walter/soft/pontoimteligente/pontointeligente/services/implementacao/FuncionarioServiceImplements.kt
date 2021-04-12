@@ -10,7 +10,7 @@ import java.util.*
 class FuncionarioServiceImplements(
     val funcionarioRepository: FuncionarioRepository
 ) : FuncionariaoService {
-    override fun buscarPorId(id: UUID): Optional<Funcionario> = funcionarioRepository.findOne(id)
+    override fun buscarPorId(id: UUID): Optional<Funcionario> = funcionarioRepository.findById(id)
 
     override fun buscarPorEmail(email: String): Optional<Funcionario> = funcionarioRepository.findByEmail(email)
 
