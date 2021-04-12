@@ -7,4 +7,6 @@ import java.util.*
 interface EmpresaRepository : JpaRepository<Empresa, UUID>{
 
     fun findByCnpj(cnpj: String) : Optional<Empresa>
+
+    //fun findByCnpj(cnpj: String) : Empresa
 }
