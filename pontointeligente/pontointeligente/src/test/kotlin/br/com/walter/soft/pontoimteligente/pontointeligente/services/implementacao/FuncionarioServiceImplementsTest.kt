@@ -33,7 +33,7 @@ internal class FuncionarioServiceImplementsTest{
     fun setUp(){
         BDDMockito.given(funcionarioRepository?.save(Mockito.any(Funcionario::class.java)))
             .willReturn(funcionario())
-        BDDMockito.given(funcionarioRepository?.findOne(id = id )).willReturn(Optional.of(funcionario()))
+        BDDMockito.given(funcionarioRepository?.findById(id)).willReturn(Optional.of(funcionario()))
         BDDMockito.given(funcionarioRepository?.findByCpf(cpf = cpf )).willReturn(Optional.of(funcionario()))
         BDDMockito.given(funcionarioRepository?.findByEmail(email = email )).willReturn(Optional.of(funcionario()))
     }
