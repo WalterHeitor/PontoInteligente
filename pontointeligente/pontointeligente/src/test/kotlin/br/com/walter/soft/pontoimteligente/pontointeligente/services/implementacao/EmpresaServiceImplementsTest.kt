@@ -15,11 +15,11 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import java.util.*
 
-@SpringBootTest()
+@SpringBootTest
 internal class EmpresaServiceImplementsTest{
 
     @Autowired
-    val empresaService: EmpresaService? = null
+    val empresaService: EmpresaServiceImplements? = null
 
     @MockBean
     private val empresaRepository: EmpresaRepository? = null
@@ -31,7 +31,6 @@ internal class EmpresaServiceImplementsTest{
     fun setUp(){
         BDDMockito.given(empresaRepository?.findByCnpj(Cnpj)).willReturn(Optional.of(empresa()))
         BDDMockito.given(empresaRepository?.save(empresa())).willReturn(empresa())
-        empresaRepository?.save(empresa())
     }
 
     @Test
