@@ -10,5 +10,7 @@ interface FuncionarioRepository : JpaRepository<Funcionario, UUID> {
 
     fun findByCpf(cpf: String): Optional<Funcionario>
 
-    fun findOne(id: UUID): Optional<Funcionario>
+    //fun findOne(id: UUID): Optional<Funcionario>
+
+
 }
