@@ -9,4 +9,6 @@ interface FuncionarioRepository : JpaRepository<Funcionario, UUID> {
     fun findByEmail(email: String): Optional<Funcionario>
 
     fun findByCpf(cpf: String): Optional<Funcionario>
+
+    fun findOne(id: UUID): Optional<Funcionario>
 }
