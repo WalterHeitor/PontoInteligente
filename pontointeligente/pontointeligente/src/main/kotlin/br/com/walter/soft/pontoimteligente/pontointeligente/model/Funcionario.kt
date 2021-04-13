@@ -1,18 +1,33 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.model
 
 import br.com.walter.soft.pontoimteligente.pontointeligente.enuns.PerfilEnum
+import org.hibernate.validator.constraints.Length
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
 
 @Entity
 class Funcionario(
+    @field:NotBlank(message = "Nao pode ser nulo ou em branco")
+    @field:Length(min= 3, max= 200, message = "deve conter minimo de {min} e maximo de {max}")
+    @field:Column(nullable = false)
     val nome: String,
+
+    @field:NotBlank(message = "Nao pode ser nulo ou em branco")
+    @field:Length(min= 3, max= 200, message = "deve conter minimo de {min} e maximo de {max}")
+    @field:Column(nullable = false)
     val email: String,
-    val senha: String,
+
+    @field:NotBlank(message = "Nao pode ser nulo ou em branco")
+    @field:Length(min= 3, max= 200, message = "deve conter minimo de {min} e maximo de {max}")
+    @field:Column(nullable = false)
     val cpf: String,
+
+    val senha: String?,
     val valorDaHora: Double? = 0.0,
     val qtdHorasDeTrabalhoPorDia: Float? = 0.0f,
     val qtdHorasDeAmoço: Float? = 0.0f,
+
     @field:Enumerated(EnumType.STRING)
     val perfilEnum: PerfilEnum,
     @field:ManyToOne(cascade = [CascadeType.ALL])

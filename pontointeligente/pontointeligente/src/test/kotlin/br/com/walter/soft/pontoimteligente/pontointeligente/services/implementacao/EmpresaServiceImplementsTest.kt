@@ -2,7 +2,6 @@ package br.com.walter.soft.pontoimteligente.pontointeligente.services.implementa
 
 import br.com.walter.soft.pontoimteligente.pontointeligente.model.Empresa
 import br.com.walter.soft.pontoimteligente.pontointeligente.repositories.EmpresaRepository
-import br.com.walter.soft.pontoimteligente.pontointeligente.services.EmpresaService
 import org.junit.jupiter.api.Assertions
 
 
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import java.util.*
+import kotlin.jvm.Throws
 
 @SpringBootTest
 internal class EmpresaServiceImplementsTest{
@@ -27,7 +27,7 @@ internal class EmpresaServiceImplementsTest{
     private val Cnpj = "50.684.152/0001-29"
 
     @BeforeEach
-   // @Throws(Exception::class)
+    @Throws(Exception::class)
     fun setUp(){
         BDDMockito.given(empresaRepository?.findByCnpj(Cnpj)).willReturn(Optional.of(empresa()))
         BDDMockito.given(empresaRepository?.save(empresa())).willReturn(empresa())

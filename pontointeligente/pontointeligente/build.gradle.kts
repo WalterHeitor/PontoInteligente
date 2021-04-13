@@ -33,6 +33,9 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/junit/junit
 //	testImplementation ("junit:version: 4.12")
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+	implementation ("org.hibernate:hibernate-core:version:5.4.21.Final")
+
 
 }
 
