@@ -46,36 +46,37 @@ internal class LancamentoServiceimplementsTest {
     @Throws(Exception::class)
     fun setUp() {
         //        ?.findByFuncionarioId(id, PageRequest(1, 10, by(Sort.Direction.ASC))))
-//        BDDMockito
-//            .given<Page<Lancamento>>(lancamentoRepository
-//            ?.findByFuncionarioId(id, PageRequest.of(1,10)))
-//            .willReturn(PageImpl(ArrayList<Lancamento>()))
-//
-//        BDDMockito.given(lancamentoRepository?.findById(1L))
-//            .willReturn(Optional.of(lancamento()))
+        BDDMockito
+            .given<Page<Lancamento>>(lancamentoRepository
+            ?.findByFuncionarioId(id, PageRequest.of(0,10)))
+            .willReturn(PageImpl(ArrayList<Lancamento>()))
+
+        BDDMockito.given(lancamentoRepository?.findById(1L))
+            .willReturn(Optional.of(lancamento()))
 
         BDDMockito.given(lancamentoRepository?.save(Mockito.any(Lancamento::class.java)))
             .willReturn(lancamento())
     }
 
 
-//    @Test
-//    fun buscaPorFuncionarioId() {
-//    }
+    @Test
+    fun buscaPorFuncionarioId() {
+        val lancamento: Page<Lancamento>? = lancamentoService
+            ?.buscaPorFuncionarioId(id, PageRequest.of(0, 10))
+        assertNotNull(lancamento)
+    }
 
-//    @Test
-//    fun buscaPorId() {
-//    }
+    @Test
+    fun buscaPorId() {
+        val lancamento: Lancamento? = lancamentoService?.buscaPorId(1L)?.get()
+        assertNotNull(lancamento)
+    }
 
     @Test
     fun percistir() {
         val lancamento: Lancamento? = lancamentoService?.percistir(lancamento())
-        Assertions.assertNotNull(lancamento)
+        assertNotNull(lancamento)
     }
-
-//    @Test
-//    fun remover() {
-//    }
 
     private fun lancamento(): Lancamento =
         Lancamento(TipoEnum.INICIO_TRABALHO, data = LocalDate.now(), funcionario = funcionario())
