@@ -1,4 +1,6 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.erros
 
-class ListError {
-}
+data class ListError<T> (
+    val erros: ArrayList<String> = arrayListOf(), // inicializar.
+    var data: T? = null
+        )
