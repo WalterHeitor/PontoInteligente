@@ -11,17 +11,14 @@ import java.util.*
 class LancamentoServiceimplements(
     val lancamentoRepository: LancamentoRepository
 ) : LancamentoService {
-    override fun buscaPorFuncionarioId(id: UUID, pageable: Pageable): Page<Lancamento> {
-        TODO("Not yet implemented")
-    }
+    override fun buscaPorFuncionarioId(id: UUID, pageable: Pageable): Page<Lancamento>
+                = lancamentoRepository.findByFuncionarioId(id, pageable)
 
-    override fun buscaPorId(id: Long): Optional<Lancamento> {
-        TODO("Not yet implemented")
-    }
+    override fun buscaPorId(id: Long): Optional<Lancamento> = lancamentoRepository.findById(id)
 
     override fun percistir(lancamento: Lancamento): Lancamento = lancamentoRepository.save(lancamento)
 
-    override fun remover(id: Long) {
-        TODO("Not yet implemented")
-    }
+    override fun remover(id: Long) = lancamentoRepository.deleteById(id)
+
+    fun deletarLancamento(lancamento: Lancamento) = lancamentoRepository.delete(lancamento)
 }
