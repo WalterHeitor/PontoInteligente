@@ -1,5 +1,7 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.request
 
+import br.com.walter.soft.pontoimteligente.pontointeligente.enuns.PerfilEnum
+import br.com.walter.soft.pontoimteligente.pontointeligente.model.Funcionario
 import org.hibernate.validator.constraints.Length
 import javax.persistence.Column
 import javax.validation.constraints.Email
@@ -20,7 +22,7 @@ data class NovoFuncionarioRequest(
     val cpf: String,
 
     val perfil: String? = null,
-    val empresaId: String? = null,
+    val empresaId: NovaEmpresaRequest? = null,
 
     val senha: String? = null,
 
@@ -28,4 +30,12 @@ data class NovoFuncionarioRequest(
     val qtdHorasDeTrabalhoPorDia: Float? = 0.0f,
     val qtdHorasDeAmoço: Float? = 0.0f,
 ) {
+    fun toModel(): Funcionario = Funcionario(
+        nome = nome,
+        email = email,
+        cpf = cpf,
+        perfilEnum = PerfilEnum.valueOf(perfil.toString()),
+        senha = senha,
+        empresa = empresaId !!.toModel ()
+    )
 }
