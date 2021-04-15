@@ -1,5 +1,6 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.model
 
+import org.hibernate.annotations.Type
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -13,8 +14,13 @@ class Empresa(
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //val id: Long? = null
-    val id: UUID? = null
+//    @Type(type = "org.hibernate.type.UUIDCharType")
+    @Type(type = "uuid-char")
+//    val id: Long? = null
+    var id: UUID? = null
+
+
+
     override fun toString(): String {
         return "Empresa(razaoSocial='$razaoSocial', cnpj='$cnpj', id=$id)"
     }
