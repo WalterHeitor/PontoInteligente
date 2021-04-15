@@ -1,6 +1,7 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.model
 
 import br.com.walter.soft.pontoimteligente.pontointeligente.enuns.PerfilEnum
+import org.hibernate.annotations.Type
 import org.hibernate.validator.constraints.Length
 import java.util.*
 import javax.persistence.*
@@ -30,13 +31,23 @@ class Funcionario(
 
     @field:Enumerated(EnumType.STRING)
     val perfilEnum: PerfilEnum,
-    @field:ManyToOne(cascade = [CascadeType.ALL])
+
+    @field:ManyToOne (cascade = [CascadeType.MERGE, CascadeType.REMOVE])
     val empresa: Empresa,
+
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Type(type = "org.hibernate.type.UUIDCharType")
+
     //val id: Long? = null
-    val id: UUID? = null
+    var id: UUID? = null
+
+
+    override fun toString(): String {
+        return "Funcionario(nome='$nome', email='$email', cpf='$cpf', senha=$senha, valorDaHora=$valorDaHora, qtdHorasDeTrabalhoPorDia=$qtdHorasDeTrabalhoPorDia, qtdHorasDeAmoço=$qtdHorasDeAmoço, perfilEnum=$perfilEnum, empresa=$empresa, id=$id)"
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
