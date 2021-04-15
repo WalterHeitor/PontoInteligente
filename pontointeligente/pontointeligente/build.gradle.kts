@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+//	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -26,16 +26,16 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
+//	testImplementation("org.springframework.security:spring-security-test")
 
 	testImplementation ("org.junit.jupiter:junit-jupiter-api")
 //	testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
 
 	// https://mvnrepository.com/artifact/junit/junit
 //	testImplementation ("junit:version: 4.12")
-	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
-	implementation ("org.hibernate:hibernate-core:version:5.4.21.Final")
-
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core   :5.4.21.Final
+//	implementation ("org.hibernate:hibernate-core:version:5.4.21.Final")
+	implementation("org.hibernate:hibernate-validator:6.1.6.Final") //anotacao do hibernate
 
 }
 
