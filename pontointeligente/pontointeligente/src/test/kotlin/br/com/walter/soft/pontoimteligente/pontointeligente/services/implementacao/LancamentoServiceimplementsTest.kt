@@ -86,7 +86,7 @@ internal class LancamentoServiceimplementsTest {
         email = "email@email.com",
         cpf = "532.193.840-72",
         perfilEnum = PerfilEnum.ROLE_ADMIN,
-        senha = SenhaUtils.gerarBcrypt("123456"),
+        senha = "123456", // SenhaUtils.gerarBcrypt("123456"),
         empresa = empresa()
     )
     private fun empresa(): Empresa = Empresa("WalterSoft", "50.684.152/0001-29")
