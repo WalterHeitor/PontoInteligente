@@ -1,15 +1,19 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.model
 
 import org.hibernate.annotations.Type
+import org.hibernate.validator.constraints.br.CNPJ
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.validation.constraints.NotBlank
 
 @Entity
 class Empresa(
+    @field:NotBlank(message = "O campo nao deve ser vazio ou nulo.")
     val razaoSocial: String,
+    @field:CNPJ(message = "Deve ser um documento válido")
     val cnpj: String,
 ) {
     @Id
