@@ -1,28 +1,27 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.controller
 
-import br.com.walter.soft.pontoimteligente.pontointeligente.enuns.PerfilEnum
-import br.com.walter.soft.pontoimteligente.pontointeligente.model.Empresa
-import br.com.walter.soft.pontoimteligente.pontointeligente.model.Funcionario
 import br.com.walter.soft.pontoimteligente.pontointeligente.repositories.LancamentoRepository
 import br.com.walter.soft.pontoimteligente.pontointeligente.request.NovaEmpresaRequest
 import br.com.walter.soft.pontoimteligente.pontointeligente.request.NovoFuncionarioRequest
 import br.com.walter.soft.pontoimteligente.pontointeligente.request.NovoLancamentoRequest
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
-import org.springframework.test.context.TestConstructor
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.post
-import javax.persistence.EntityManager
 
 
-@WebMvcTest
+//@WebMvcTest
 /**
  * Uma maneira mais indiomatica de injetar dependencias
  * @TestConstructor(autowireMode =  TestConstructor.AutowireMode.ALL) // anotacao para injetar no construtor
@@ -30,7 +29,9 @@ internal class LancamentoControllerTest(
 val mockMvc: MockMvc,
 ){
  */
-
+@SpringBootTest
+@AutoConfigureMockMvc
+@AutoConfigureDataJpa
 internal class LancamentoControllerTest {
     /**
      * duas maneiras para injetar mockMvc do Spring.
@@ -48,8 +49,9 @@ internal class LancamentoControllerTest {
     @Autowired
     lateinit var objectMapper: ObjectMapper
 
-//    @MockBean
-//    lateinit var lancamentoRepository: LancamentoRepository
+    //@MockBean
+    @Autowired
+    lateinit var lancamentoRepository: LancamentoRepository
 
     @Test
     fun `deve criar novo lancamento`() {
@@ -73,9 +75,18 @@ internal class LancamentoControllerTest {
             status { isOk() }
         }
         /**
+         * Teste se esta salvando lancamento.
+         */
+ //       Mockito.verify(lancamentoRepository).save(ArgumentMatchers.any())
+        /**
          *
          */
-        //Mockito.verify(lancamentoRepository).save(ArgumentMatchers.any())
+//        with(lancamentoRepository.findAll()){
+//            Assertions.assertAll({
+//                Assertions.assertTrue(size == 1)
+//                Assertions.assertEquals("Itumbiara1", get(0).localizacao)
+//            })
+//        }
     }
 
     fun NovoLancamentoRequest.toJson(): String = objectMapper.writeValueAsString(this)
