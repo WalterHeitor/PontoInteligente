@@ -1,6 +1,7 @@
 package br.com.walter.soft.pontoimteligente.pontointeligente.request
 
 import br.com.walter.soft.pontoimteligente.pontointeligente.enuns.PerfilEnum
+import br.com.walter.soft.pontoimteligente.pontointeligente.model.Empresa
 import br.com.walter.soft.pontoimteligente.pontointeligente.model.Funcionario
 import org.hibernate.validator.constraints.Length
 import javax.persistence.Column
@@ -22,7 +23,7 @@ data class NovoFuncionarioRequest(
     val cpf: String,
 
     val perfil: String? = null,
-    val empresaId: NovaEmpresaRequest? = null,
+    var empresaId: NovaEmpresaRequest? = null,
 
     val senha: String? = null,
 
@@ -38,4 +39,25 @@ data class NovoFuncionarioRequest(
         senha = senha,
         empresa = empresaId !!.toModel ()
     )
+    fun setEmpresaDto(empresa: Empresa): NovaEmpresaRequest = NovaEmpresaRequest(rasaoSocial = empresa.razaoSocial, cnpj = empresa.cnpj)
+    companion object{
+        fun converterDto(listFuncionario: List<Funcionario>): List<NovoFuncionarioRequest>{
+            return listFuncionario.map { it ->
+                NovoFuncionarioRequest(
+                    nome = it.nome,
+                    email = it.email,
+                    cpf = it.cpf,
+                    perfil = it.perfilEnum.name,
+                    empresaId = it.empresa.let {it ->
+                        NovaEmpresaRequest(it!!.razaoSocial, cnpj = it.cnpj)
+                    },
+                    senha = it.senha,
+                    valorDaHora = it.valorDaHora,
+                    qtdHorasDeTrabalhoPorDia = it.qtdHorasDeTrabalhoPorDia,
+                    qtdHorasDeAmoço = it.qtdHorasDeAmoço
+
+                )
+            }
+        }
+    }
 }
