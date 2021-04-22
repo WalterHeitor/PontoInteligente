@@ -16,14 +16,14 @@ import javax.transaction.Transactional
 
 @SpringBootApplication
 class PontointeligenteApplication(
-//    val empresaRepository: EmpresaRepository,
-//    val funcionarioRepository: FuncionarioRepository,
+    val empresaRepository: EmpresaRepository,
+    val funcionarioRepository: FuncionarioRepository,
     ) : CommandLineRunner {
     override fun run(vararg args: String?) {
         val LOGGER = LoggerFactory.getLogger(this::class.java)
 
-        //Instaciacao(LOGGER)
-       // buscaDeEmpresaEFuncionario(LOGGER)
+//        Instaciacao(LOGGER)
+ //       buscaDeEmpresaEFuncionario(LOGGER)
     }
 
     fun buscaDeEmpresaEFuncionario(LOGGER: Logger) {
@@ -40,45 +40,49 @@ fun main(args: Array<String>) {
     runApplication<PontointeligenteApplication>(*args)
 }
 
-//private fun PontointeligenteApplication.Instaciacao(LOGGER: Logger) {
+private fun PontointeligenteApplication.Instaciacao(LOGGER: Logger) {
 //    	LimparBanco(empresaRepository = empresaRepository, funcionarioRepository = funcionarioRepository)
-//    //instaciação
-//    val empresa: Empresa = Empresa(
-//        razaoSocial = "WalterSoft",
-//        cnpj = "04.397.978/0001-90"
-//    )
-//    val id = empresaRepository.save(empresa)
-//    LOGGER.info("Empresa $empresa")
-//
-//    val admin: Funcionario = Funcionario(
-//        nome = "Walter Heitor",
-//        email = "walter@email.com",
-//        cpf = "721.926.140-39",
-//        senha = SenhaUtils.gerarBcrypt("123456"),
-//        empresa = id,
-//        perfilEnum = PerfilEnum.ROLE_ADMIN
-//    )
-//    LOGGER.info("ADIMIN $admin")
-//    funcionarioRepository.save(admin)
-//    val funcionario: Funcionario = Funcionario(
-//        nome = "Rioderleia Lima",
-//        email = "rioderleia@email.com",
-//        cpf = "983.438.680-05",
-//        senha = SenhaUtils.gerarBcrypt("654321"),
-//        empresa = id,
-//        perfilEnum = PerfilEnum.ROLE_USUARIO
-//    )
-//    LOGGER.info("funcionario $funcionario")
-//    funcionarioRepository.save(funcionario)
-//
-//    println("Empresa id ${empresa.id}")
-//    println("Admin id ${admin.id}")
-//    println("Funcionario ${funcionario.id}")
-//}
-//
-//fun LimparBanco(empresaRepository: EmpresaRepository, funcionarioRepository: FuncionarioRepository) {
-//    //cenario
-//    funcionarioRepository.deleteAll()
-//    empresaRepository.deleteAll()
-//
-//}
+    //instaciação
+        instanciar(LOGGER)
+}
+
+private fun PontointeligenteApplication.instanciar(LOGGER: Logger) {
+    val empresa: Empresa = Empresa(
+        razaoSocial = "WalterSoft",
+        cnpj = "04.397.978/0001-90"
+    )
+    val id = empresaRepository.save(empresa)
+    LOGGER.info("Empresa $empresa")
+
+    val admin: Funcionario = Funcionario(
+        nome = "Walter Heitor",
+        email = "walter@email.com",
+        cpf = "721.926.140-39",
+        senha = SenhaUtils.gerarBcrypt("123456"),
+        empresa = id,
+        perfilEnum = PerfilEnum.ROLE_ADMIN
+    )
+    LOGGER.info("ADIMIN $admin")
+    funcionarioRepository.save(admin)
+    val funcionario: Funcionario = Funcionario(
+        nome = "Rioderleia Lima",
+        email = "rioderleia@email.com",
+        cpf = "983.438.680-05",
+        senha = SenhaUtils.gerarBcrypt("654321"),
+        empresa = id,
+        perfilEnum = PerfilEnum.ROLE_USUARIO
+    )
+    LOGGER.info("funcionario $funcionario")
+    funcionarioRepository.save(funcionario)
+
+    println("Empresa id ${empresa.id}")
+    println("Admin id ${admin.id}")
+    println("Funcionario ${funcionario.id}")
+}
+
+fun LimparBanco(empresaRepository: EmpresaRepository, funcionarioRepository: FuncionarioRepository) {
+    //cenario
+    funcionarioRepository.deleteAll()
+    empresaRepository.deleteAll()
+
+}
