@@ -63,13 +63,7 @@ internal class LancamentoControllerTest {
                 localizacao = "Itumbiara",
                 data = null,
                 tipo = "INICIO_TRABALHO",
-                funcionarioId = NovoFuncionarioRequest(
-                    nome = "Walter",
-                    email = "email@email.com",
-                    cpf = "",
-                    perfil = "ROLE_ADMIN",
-                    empresaId = NovaEmpresaRequest(rasaoSocial = "WalterSoft", cnpj = "")
-                )
+                funcionarioId = ""
             ).toJson()
         }.andExpect {
             status { isOk() }
