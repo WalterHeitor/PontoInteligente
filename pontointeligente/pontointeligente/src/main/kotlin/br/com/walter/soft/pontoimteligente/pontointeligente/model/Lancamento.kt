@@ -12,8 +12,9 @@ class Lancamento(
     val localizacao: String? = "",
     val data: LocalDate? = null,
 
-    @field:ManyToOne(cascade = [CascadeType.ALL])
-    val funcionario: Funcionario
+    @field:ManyToOne(cascade = [CascadeType.MERGE])
+    val funcionario: Funcionario? = null
+
 
 ) {
 
