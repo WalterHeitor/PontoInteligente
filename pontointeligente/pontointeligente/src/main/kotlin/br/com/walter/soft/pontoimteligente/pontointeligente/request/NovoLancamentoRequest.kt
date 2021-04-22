@@ -15,14 +15,13 @@ data class NovoLancamentoRequest(
     @field:NotBlank(message = "Nao pode ser vazio")
     val tipo: String? = null,
 
-    val funcionarioId: NovoFuncionarioRequest? = null
+    val funcionarioId: String? = null
 ) {
     fun toModel(): Lancamento = Lancamento(
         tipoEnum = TipoEnum.valueOf(tipo.toString()),
         descricao = this.descricao,
         localizacao = this.localizacao,
         data = LocalDate.now(),
-        funcionario = funcionarioId!!.toModel(),
     )
 }
 
