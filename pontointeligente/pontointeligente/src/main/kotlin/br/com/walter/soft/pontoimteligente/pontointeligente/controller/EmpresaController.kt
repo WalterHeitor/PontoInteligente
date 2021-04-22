@@ -54,7 +54,7 @@ class EmpresaController(val empresaRepository: EmpresaRepository,
          */
         with(novaEmpresaRequest.toModel()) {
             empresaRepository.save(this)
-            val uri = builder!!.path("/api/empresas/{id}").buildAndExpand(this.id.toString()).toUri()
+            val uri = builder.path("/api/empresas/{id}").buildAndExpand(this.id.toString()).toUri()
             return ResponseEntity.created(uri).body(novaEmpresaRequest)
         }
 
