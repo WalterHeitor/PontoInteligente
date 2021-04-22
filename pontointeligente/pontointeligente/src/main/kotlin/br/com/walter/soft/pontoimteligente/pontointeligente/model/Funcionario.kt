@@ -32,8 +32,8 @@ class Funcionario(
     @field:Enumerated(EnumType.STRING)
     val perfilEnum: PerfilEnum,
 
-    @field:ManyToOne (cascade = [CascadeType.MERGE, CascadeType.REMOVE])
-    val empresa: Empresa,
+    @field:ManyToOne (cascade = [CascadeType.MERGE,])
+    var empresa: Empresa? = null
 
 ) {
     @Id
